@@ -10,4 +10,20 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+#
+# Load custom environment setup scripts & aliases
+# --> Sources all files in $HOME/.zpreszto-contrib that are not directories
+if [ -x $HOME/.zprezto-contrib ]; then
+	for file in $HOME/.zprezto-contrib/*.sh ; do
+		source $file
+	done
+fi
+
+#
+# Implement 'set & save' for prompt themes
+#
+autoload -Uz promptinit
+promptinit
+
+# Defined in ~/.zprezto-contrib/environment.sh
+prompt $PROMPT_THEME
