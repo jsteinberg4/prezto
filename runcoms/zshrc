@@ -13,8 +13,8 @@ fi
 #
 # Load custom environment setup scripts & aliases
 # --> Sources all files in $HOME/.zpreszto-contrib that are not directories
-if [ -x $HOME/.zprezto-contrib ]; then
-	for file in $HOME/.zprezto-contrib/*.sh ; do
+if [ -x $HOME/.zprezto/custom ]; then
+	for file in $HOME/.zprezto/custom/*.sh ; do
 		source $file
 	done
 fi
@@ -24,6 +24,4 @@ fi
 #
 autoload -Uz promptinit
 promptinit
-
-# Defined in ~/.zprezto-contrib/environment.sh
 prompt $PROMPT_THEME
