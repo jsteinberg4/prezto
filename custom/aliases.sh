@@ -14,3 +14,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# Overwrite vim with nvim
+alias vi='nvim'
+alias vim='nvim'
+
+
+#
+#  Move up windows shortcuts
+#
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
