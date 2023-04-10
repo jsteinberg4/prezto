@@ -25,3 +25,16 @@ alias vim='nvim'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+
+#
+#  Fuzzy finding
+#
+if command -v fzf &> /dev/null ; then
+  # Setup fzf with preferred default ops
+  alias fzf="fzf --reverse --border=bold"
+  # Fuzzy find directory
+  alias fzd='cd $(fd --type d | fzf )'
+  # Fuzzy find file
+  alias fzf='nvim $(fd --type f | fzf )' 
+fi
