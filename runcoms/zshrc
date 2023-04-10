@@ -20,6 +20,15 @@ if [ -x $HOME/.zprezto/custom ]; then
 fi
 
 #
+# Automatically load any work-specific configs
+#
+if [ -x $HOME/work-zsh/ ]; then
+  for file in $HOME/work-zsh/*.sh ; do
+    source $file
+  done
+fi
+
+#
 # Implement 'set & save' for prompt themes
 #
 autoload -Uz promptinit
