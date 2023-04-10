@@ -73,6 +73,7 @@ if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
 fi
 
 # Dynamically add python versions to path
+setopt EXTENDED_GLOB
 for file in "/Library/Frameworks/Python.framework/Versions"/^Current ; do 
   PATH="$file/bin:${PATH}"
 done
