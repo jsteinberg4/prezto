@@ -10,14 +10,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-#
-# Load custom environment setup scripts & aliases
-# --> Sources all files in $HOME/.zpreszto-contrib that are not directories
-if [ -x $HOME/.zprezto/custom ]; then
-	for file in $HOME/.zprezto/custom/*.sh ; do
-		source $file
-	done
-fi
 
 #
 # Automatically load any work-specific configs
@@ -44,3 +36,44 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# Overwrite vim with nvim
+alias vi='nvim'
+alias vim='nvim'
+
+
+#
+#  Move up windows shortcuts
+#
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+
+#
+#  Fuzzy finding
+#
+if command -v fzf &> /dev/null ; then
+  # Setup fzf with preferred default ops
+  alias fzf="fzf --reverse --border=bold"
+  # Fuzzy find directory
+  alias fzd='cd $(fd --type d | fzf )'
+  # Fuzzy find file
+  alias fzf='nvim $(fd --type f | fzf )'
+fi
