@@ -11,7 +11,7 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # Shell theme setup
-export PROMPT_THEME='bart'
+export PROMPT_THEME='powerlevel10k'
 
 #export JAVA_HOME=`/usr/libexec/java_home -v 17`
 
