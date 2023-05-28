@@ -47,13 +47,27 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
+# Dynamically add python versions to path
+python_versions=""
+setopt EXTENDED_GLOB
+for file in "/Library/Frameworks/Python.framework/Versions"/^Current ; do
+  next_path="$file/bin"
+  if [ "$python_versions" = "" ]; then
+    python_versions="$next_path"
+  else
+    python_versions="$next_path:$python_versions"
+  fi
+done
+
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/{,s}bin(N)
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
+  $python_versions
   $path
 )
+
 
 #
 # Less
@@ -72,9 +86,3 @@ if [[ -z "$LESSOPEN" ]] && (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
-# Dynamically add python versions to path
-setopt EXTENDED_GLOB
-for file in "/Library/Frameworks/Python.framework/Versions"/^Current ; do 
-  PATH="$file/bin:${PATH}"
-done
-export PATH
