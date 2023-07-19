@@ -59,12 +59,21 @@ for file in "/Library/Frameworks/Python.framework/Versions"/^Current ; do
   fi
 done
 
+# Add my scripts to path
+local my_scripts=""
+if [ -x "$HOME/scripts/" ]; then
+  my_scripts="$HOME/scripts/"
+fi
+
+# NOTE: Set path stuff *here*
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/{,s}bin(N)
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $python_versions
+  $my_scripts
+  $HOME/go/bin
   $path
 )
 
