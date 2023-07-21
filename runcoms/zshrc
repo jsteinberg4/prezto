@@ -64,6 +64,9 @@ fi
 alias vi='nvim'
 alias vim='nvim'
 
+alias ll="${aliases[ll]} -alF"
+alias ls="${aliases[ls]} -F"
+
 
 #
 #  Move up windows shortcuts
