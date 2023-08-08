@@ -27,6 +27,14 @@ if [[ -z "$PAGER" ]]; then
   export PAGER='less'
 fi
 
+# Set Neovim as pager (if available)
+if [[ -z "$MANPAGER" ]]; then
+  export MANPAGER='nvim +Man!'
+fi
+if [[ -z "$MANWIDTH" ]]; then
+  export MANWIDTH=999
+fi
+
 #
 # Language
 #
