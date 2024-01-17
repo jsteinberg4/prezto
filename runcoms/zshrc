@@ -21,8 +21,8 @@ fi
 #
 # Automatically load any work-specific configs
 #
-if [ -x $HOME/work-zsh/ ]; then
-  for file in $HOME/work-zsh/*.sh ; do
+if [ -d "$WORK_HOME/zsh-conf" ]; then
+  for file in $HOME/zsh-conf/*.sh ; do
     source $file
   done
 fi

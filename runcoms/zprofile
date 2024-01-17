@@ -8,8 +8,8 @@
 #
 # Work configs
 #
-if [[ -z "$WORK_HOME" && !( -d "$HOME/Work/" ) ]]; then
-  export WORK_HOME="$HOME/Work/"
+if [[ -z "$WORK_HOME" &&  -d "$HOME/LorisAi/"  ]]; then
+  export WORK_HOME="$HOME/LorisAi/"
 fi
 
 #
