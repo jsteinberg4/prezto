@@ -6,6 +6,13 @@
 #
 
 #
+# Work configs
+#
+if [[ -z "$WORK_HOME" && !( -d "$HOME/Work/" ) ]]; then
+  export WORK_HOME="$HOME/Work/"
+fi
+
+#
 # Browser
 #
 
@@ -77,6 +84,7 @@ fi
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/{,s}bin(N)
+  $WORK_HOME/{,s}bin(N)
   /opt/{homebrew,local}/{,s}bin(N)
   /usr/local/{,s}bin(N)
   $python_versions
